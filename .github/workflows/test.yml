@@ -1,0 +1,22 @@
+name : Sample worlflow file
+
+on:
+  workflow_dispatch
+
+env:
+  name: Shikar
+
+jobs: 
+  
+  say-hello-world:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Hello World!"
+
+  say-my-name:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Hello This is $name" & echo "\n Learning github worlflow!"
+      
+  
+    
