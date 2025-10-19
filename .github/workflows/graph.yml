@@ -1,0 +1,41 @@
+name: Acyclic graph job pattern
+
+on:
+  push:
+    branches: 
+      - main
+      - ci
+  
+  workflow_dispatch:
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Hello World!"
+
+  job2:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "Hello This is $name"
+          echo "Learning GitHub workflow!"
+  job3:
+    runs-on: ubuntu-latest
+    needs:
+      - job1
+      - job2
+    steps:
+      - run: 
+          echo "This runs after job1 and job2"
+
+  job4:
+    runs-on: ubuntu-latest
+    needs:
+      - job3
+    steps:
+      - run: 
+          echo "This runs after job1 and job3"
+    
+
+
