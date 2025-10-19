@@ -38,4 +38,4 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project
-          echo test var, $name1, $name2
+          echo test var, $name1, $name2, ${{CONFIG_VAR}}
