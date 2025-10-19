@@ -1,4 +1,4 @@
-name : Sample worlflow file
+name: Sample workflow file
 
 on:
   workflow_dispatch:
@@ -6,8 +6,7 @@ on:
 env:
   name: poseidon0070
 
-jobs: 
-  
+jobs:
   say-hello-world:
     runs-on: ubuntu-latest
     steps:
@@ -16,9 +15,6 @@ jobs:
   say-my-name:
     runs-on: ubuntu-latest
     steps:
-      - run: | 
-          echo "Hello This is $name" 
-          echo "\n Learning github worlflow!"
-      
-  
-    
+      - run: |
+          echo "Hello This is $name"
+          echo "Learning GitHub workflow!"
