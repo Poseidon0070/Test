@@ -33,5 +33,5 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
-          publish_branch: frontend     # 👈 explicitly sets the target branch
+          publish_branch: gh-pages     # 👈 explicitly sets the target branch
           force_orphan: true    
