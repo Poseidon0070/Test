@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      packages: write   # required for pushing to GHCR
+      packages: write
 
     steps:
       - name: Checkout code
@@ -26,6 +26,10 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Normalize repo owner name
+        id: repo
+        run: echo "owner_lower=$(echo ${{ github.repository_owner }} | tr '[:upper:]' '[:lower:]')" >> $GITHUB_OUTPUT
+
       - name: Build and Push Docker Image
         uses: docker/build-push-action@v5
         with:
@@ -33,4 +37,5 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            ghcr.io/${{ lowercase(github.repository_owner) }}/cicd:${{ github.sha }}
+            ghcr.io/${{ steps.repo.outputs.owner_lower }}/cicd:latest
+            ghcr.io/${{ steps.repo.outputs.owner_lower }}/cicd:${{ github.sha }}
